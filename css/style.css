@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 1600px;
+    height: 1000px;
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
+    grid-template-areas: "empty draw"
+                        "letter draw";
+}
+
+#section-empty-letter {
+    border: 1px solid blue;
+    grid-area: empty;
+    width: 100%;
+
+}
+
+#section-letter {
+    border: 1px solid green;
+    grid-area: letter;
+    width: 100%;
+}
+
+#draw {
+    border: 1px solid black;
+    grid-area: draw;
+    width: 100%;
+}
+
+
+#container-letter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.letters {
+    width: 50px;
+    height: 50px;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container-random-letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-randow-word {
+    width: 50px;
+    height: 50px;
+    background-color: blueviolet;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+
