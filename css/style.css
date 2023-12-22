@@ -52,11 +52,13 @@ main {
 
 #container-random-letter {
     display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
     justify-content: center;
     align-items: center;
 }
 
-.letter-randow-word {
+.letter-random-word {
     width: 50px;
     height: 50px;
     background-color: blueviolet;

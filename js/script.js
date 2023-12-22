@@ -31,7 +31,7 @@ function generateLetter() {
 function randomWordFunction () {
     randomWord.forEach((element) => {
         const letterRandomWord = document.createElement("div");
-        letterRandomWord.classList ="letter-random-word";
+        letterRandomWord.classList = "letter-random-word";
         containerRandomLetter.appendChild(letterRandomWord);
         console.log(element)
     })
@@ -76,6 +76,6 @@ async function getRandomWord () { // Async pour faire une fonction asynchrone, Ã
 (async () => { // Pour appeler un fonction qui a un attribut async et qui renvoie une promesse (async function getRandomWord), on doit se trouver dans un contexte async autrement, la valeur ne sera jamais lu.
      randomWord = await getRandomWord();
      generateLetter();
-     randomWordFunction ()
+     randomWordFunction ();
     console.log(randomWord);
 })();
