@@ -4,6 +4,7 @@
 }
 
 main {
+    margin: auto;
     width: 1600px;
     height: 1000px;
     border: 1px solid red;
@@ -12,8 +13,13 @@ main {
     grid-template-rows: 0.5fr 1fr;
     grid-template-areas: "empty draw"
                         "letter draw";
+    
 }
 
+h1 {
+    text-align: center;
+    margin: 25px;
+}
 #section-empty-letter {
     border: 1px solid blue;
     grid-area: empty;
@@ -70,4 +76,13 @@ main {
     font-size: 25px;
 }
 
+#statut-fault {
+    text-align: center;
+}
 
+#div-img {
+    width: 50%;
+    height: 50%;
+    background-image: url(../images/pendu_0.jpg);
+    background-size: cover;
+}

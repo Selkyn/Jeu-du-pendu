@@ -3,12 +3,14 @@ const letterAloneArray = [];
 let randomWord = []; //mot aleatoire
 let letterRandomWord = document.getElementsByClassName("letter-random-word");
 //  const letters = document.getElementsByClassName("letters");
-
+const statutFault = document.getElementById("statut-fault");
 const emptyLetter = document.getElementById("section-empty-letter");
 const containerLetter = document.getElementById("container-letter");
 const draw = document.getElementById("draw");
 const containerRandomLetter = document.getElementById("container-random-letter");
+let imagePendu = document.getElementById("div-img");
 let letter ="";
+
 
 
 //fonction qui genere mes cases lettres avec une lettre unique
@@ -27,11 +29,33 @@ function generateLetter() {
                     letterRandomWord[y].style.color = "black"
                     letters.style.color = "green";
                     correctLetter = true;
+                    statutFault.innerText = "Bien joué !"
                 }
             }
             if (correctLetter === false) {
+                statutFault.innerText = "C'est pas ca !"
                 letters.style.visibility = "hidden";
                 malus ++;
+                if (malus === 1) {
+                    imagePendu.style.backgroundImage = "url(images/pendu_1.jpg"
+                }else if (malus === 2) {
+                    imagePendu.style.backgroundImage = "url(images/pendu_2.jpg"
+                }else if (malus === 3) {
+                    imagePendu.style.backgroundImage = "url(images/pendu_3.jpg"
+                }else if (malus === 4) {
+                    imagePendu.style.backgroundImage = "url(images/pendu_4.jpg"
+                }else if (malus === 5) {
+                    imagePendu.style.backgroundImage = "url(images/pendu_5.jpg"
+                }else if (malus === 6) {
+                    imagePendu.style.backgroundImage = "url(images/pendu_6.jpg"
+                }else if (malus === 7) {
+                    imagePendu.style.backgroundImage = "url(images/pendu_7.jpg"
+                }else if (malus === 8) {
+                    imagePendu.style.backgroundImage = "url(images/pendu_8.jpg"
+                }else if (malus === 9) {
+                    imagePendu.style.backgroundImage = "url(images/pendu_9.jpg"
+                }
+                // drawMalus();
             }
         })
     }
@@ -52,8 +76,20 @@ function randomWordFunction () {
     })
 }
   
-
-   
+//mes images :
+// function drawMalus() {
+//     for(let k = 0 ; k < 8; k++){
+//         imagePendu.style.backgroundImage = `url('images/pendu_${k}.jpg')
+    
+//     `}
+// }
+   // let imagesMalus = ["pendu_1", "pendu_2", "pendu_3", "pendu_4","pendu_5","pendu_6","pendu_7","pendu_8","pendu_9",]
+    // for (let i = 0; i < imagesMalus.length; i++) {
+    //     const imagePendu = document.createElement ("img");
+    //     imagePendu.classList = "image-pendu";
+    //     imagePendu.style.backgroundImage = `url('images/pendu_${i}.jpg')`
+    //     draw.appendChild(imagePendu)
+    // }
  console.log(letterAloneArray);
 
  //fonction pour avoir un mot aléatoire :
@@ -82,6 +118,7 @@ async function getRandomWord () { // Async pour faire une fonction asynchrone, �
      randomWord = await getRandomWord();
      generateLetter();
      randomWordFunction ();
+    //  drawMalus()
     console.log(randomWord);
 })();
 
