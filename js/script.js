@@ -1,13 +1,14 @@
 let malus = 0;
 const letterAloneArray = [];
-let randomWord = [];
+let randomWord = []; //mot aleatoire
+let letterRandomWord = document.getElementsByClassName("letter-random-word");
 //  const letters = document.getElementsByClassName("letters");
 
 const emptyLetter = document.getElementById("section-empty-letter");
 const containerLetter = document.getElementById("container-letter");
 const draw = document.getElementById("draw");
 const containerRandomLetter = document.getElementById("container-random-letter");
-
+let letter ="";
 
 
 //fonction qui genere mes cases lettres avec une lettre unique
@@ -20,36 +21,41 @@ function generateLetter() {
         containerLetter.appendChild(letters);
         letters.addEventListener('click', function(){
             letterAloneArray.push(letter);
+            let correctLetter = false;
+            for (let y = 0; y < letterRandomWord.length; y++) {
+                if (letterRandomWord[y].innerText === letter) {
+                    letterRandomWord[y].style.color = "black"
+                    letters.style.color = "green";
+                    correctLetter = true;
+                    break;
+                }
+            }
+            if (correctLetter === false) {
+                letters.style.visibility = "hidden";
+                malus ++;
+            }
         })
     }
  }
  
-
- 
+ console.log(malus)
+ console.log(letter)
 
 //function pour mettre un mot aleatoire dans mon tableau randomWord
 function randomWordFunction () {
     randomWord.forEach((element) => {
         const letterRandomWord = document.createElement("div");
         letterRandomWord.classList = "letter-random-word";
+        letterRandomWord.innerText = element;
         containerRandomLetter.appendChild(letterRandomWord);
         console.log(element)
+        
     })
 }
-        
-    
+  
+
+   
  console.log(letterAloneArray);
-
-
-
-
-
-
-
-
-
-
-
 
  //fonction pour avoir un mot aléatoire :
 async function getRandomWord () { // Async pour faire une fonction asynchrone, ça permet de réaliser des Promesses.
@@ -79,3 +85,24 @@ async function getRandomWord () { // Async pour faire une fonction asynchrone, �
      randomWordFunction ();
     console.log(randomWord);
 })();
+
+
+
+
+
+
+// for (let y = 0; y < letterRandomWord.length; y ++)
+            // if (letters === letterRandomWord[y].innerText) {
+            //     letterRandomWord.style.color = "red";
+            // }
+            // for (let y = 0; y < letterAloneArray.length; y ++) {
+            //     var letterSearched = letterAloneArray[y];
+            //     // console.log(letterAloneArray[y])
+            // }
+            
+            // if (randomWord.includes(letterSearched)){
+            //     letterRandomWord.style.color = "green";
+            //     console.log("ok")
+            // }else {
+            //     malus ++;
+            // }
