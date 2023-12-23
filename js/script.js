@@ -27,7 +27,6 @@ function generateLetter() {
                     letterRandomWord[y].style.color = "black"
                     letters.style.color = "green";
                     correctLetter = true;
-                    break;
                 }
             }
             if (correctLetter === false) {
