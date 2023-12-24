@@ -1,17 +1,19 @@
 let malus = 0;
-const letterAloneArray = [];
+let letterAloneArray = [];
 let randomWord = []; //mot aleatoire
 let letterRandomWord = document.getElementsByClassName("letter-random-word");
 //  const letters = document.getElementsByClassName("letters");
 const statutFault = document.getElementById("statut-fault");
 const emptyLetter = document.getElementById("section-empty-letter");
-const containerLetter = document.getElementById("container-letter");
+let containerLetter = document.getElementById("container-letter");
 const draw = document.getElementById("draw");
-const containerRandomLetter = document.getElementById("container-random-letter");
+let containerRandomLetter = document.getElementById("container-random-letter");
+const restart = document.getElementById("restart");
 let imagePendu = document.getElementById("div-img");
 let letter ="";
-
-
+let winArray = [];
+let gaugWin = 0;
+const gaugWinScoring = document.getElementById("gaug-win-scoring");
 
 //fonction qui genere mes cases lettres avec une lettre unique
 function generateLetter() {
@@ -26,44 +28,44 @@ function generateLetter() {
             let correctLetter = false;
             for (let y = 0; y < letterRandomWord.length; y++) {
                 if (letterRandomWord[y].innerText === letter) {
+                    winArray.push(letterRandomWord[y]);
+                    console.log(winArray)
                     letterRandomWord[y].style.color = "black"
-                    letters.style.color = "green";
+                    letters.style.visibility = "hidden";
                     correctLetter = true;
-                    statutFault.innerText = "Bien jouÃ© !"
+                    if (winArray.length === letterRandomWord.length) {
+                        statutFault.innerText = "Tu gagnes"
+                        restart.innerText = "Recommencer"
+                        gaugWin ++;
+                        gaugWinScoring.innerText = "Victoire : " + gaugWin;
+                        console.log(gaugWin);
+                    }
+                    // statutFault.innerText = "Bien jouÃ© !"
                 }
             }
             if (correctLetter === false) {
-                statutFault.innerText = "C'est pas ca !"
+                
                 letters.style.visibility = "hidden";
                 if (malus < 9) {
                     malus ++;
+                    statutFault.innerText = "Il te reste " + (9 - malus) + " essai";
                 }
+                else if (malus === 9){
+                    statutFault.innerText = "Perdu !"
+                    restart.innerHTML = "Recommencer"
+                    // restart.style.display = "block"
+                    // restart.addEventListener('click', location.reload, false);
+                }
+                
                 imagePendu.style.backgroundImage = `url(images/pendu_${malus}.jpg`;
-                // if (malus === 1) {
-                //     imagePendu.style.backgroundImage = "url(images/pendu_1.jpg"
-                // }else if (malus === 2) {
-                //     imagePendu.style.backgroundImage = "url(images/pendu_2.jpg"
-                // }else if (malus === 3) {
-                //     imagePendu.style.backgroundImage = "url(images/pendu_3.jpg"
-                // }else if (malus === 4) {
-                //     imagePendu.style.backgroundImage = "url(images/pendu_4.jpg"
-                // }else if (malus === 5) {
-                //     imagePendu.style.backgroundImage = "url(images/pendu_5.jpg"
-                // }else if (malus === 6) {
-                //     imagePendu.style.backgroundImage = "url(images/pendu_6.jpg"
-                // }else if (malus === 7) {
-                //     imagePendu.style.backgroundImage = "url(images/pendu_7.jpg"
-                // }else if (malus === 8) {
-                //     imagePendu.style.backgroundImage = "url(images/pendu_8.jpg"
-                // }else if (malus === 9) {
-                //     imagePendu.style.backgroundImage = "url(images/pendu_9.jpg"
-                // }
-                // drawMalus();
+               
             }
         })
     }
  }
  
+ 
+ console.log(letterAloneArray)
  console.log(malus)
  console.log(letter)
 
@@ -108,11 +110,25 @@ async function getRandomWord () { // Async pour faire une fonction asynchrone, Ã
      randomWord = await getRandomWord();
      generateLetter();
      randomWordFunction ();
-    //  drawMalus()
     console.log(randomWord);
 })();
 
 
+async function restartGame() {
+    statutFault.innerText = "Il te reste 9 essais";
+    imagePendu.style.backgroundImage = "url(images/pendu_0.jpg"
+    malus = 0;
+    containerLetter.innerHTML = "";
+    containerRandomLetter.innerHTML = "";
+    letterAloneArray = [];
+    winArray = [];
+    word = [];
+    randomWord = await getRandomWord();
+    generateLetter();
+    randomWordFunction();
+    
+ }
+restart.addEventListener("click", restartGame)
 
 
 
@@ -132,3 +148,25 @@ async function getRandomWord () { // Async pour faire une fonction asynchrone, Ã
             // }else {
             //     malus ++;
             // }
+
+
+             // if (malus === 1) {
+                //     imagePendu.style.backgroundImage = "url(images/pendu_1.jpg"
+                // }else if (malus === 2) {
+                //     imagePendu.style.backgroundImage = "url(images/pendu_2.jpg"
+                // }else if (malus === 3) {
+                //     imagePendu.style.backgroundImage = "url(images/pendu_3.jpg"
+                // }else if (malus === 4) {
+                //     imagePendu.style.backgroundImage = "url(images/pendu_4.jpg"
+                // }else if (malus === 5) {
+                //     imagePendu.style.backgroundImage = "url(images/pendu_5.jpg"
+                // }else if (malus === 6) {
+                //     imagePendu.style.backgroundImage = "url(images/pendu_6.jpg"
+                // }else if (malus === 7) {
+                //     imagePendu.style.backgroundImage = "url(images/pendu_7.jpg"
+                // }else if (malus === 8) {
+                //     imagePendu.style.backgroundImage = "url(images/pendu_8.jpg"
+                // }else if (malus === 9) {
+                //     imagePendu.style.backgroundImage = "url(images/pendu_9.jpg"
+                // }
+                // drawMalus();

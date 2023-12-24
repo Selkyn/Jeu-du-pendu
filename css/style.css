@@ -86,3 +86,7 @@ h1 {
     background-image: url(../images/pendu_0.jpg);
     background-size: cover;
 }
+
+#restart {
+    /* display: none; */
+}
