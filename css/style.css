@@ -34,14 +34,14 @@ h1 {
 #section-random-letter {
     display: grid;
     place-items: center;
-    background-color: white;
+    background-color: #f3f3b7
 }
 #section-letter {
     grid-area: letter;
     width: 100%;
     display: grid;
     place-items: center;
-    background-color: white;
+    background-color: #f3f3b7
 }
 
 #draw {
@@ -69,6 +69,10 @@ h1 {
     font-size: 25px;
 }
 
+.letters:hover {
+    cursor: pointer;
+    background-color: #582900;
+}
 #container-random-letter {
     display: flex;
     flex-wrap: wrap;

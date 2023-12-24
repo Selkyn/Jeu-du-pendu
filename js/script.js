@@ -14,11 +14,11 @@ let letter ="";
 let winArray = [];
 let gaugWin = 0;
 const gaugWinScoring = document.getElementById("gaug-win-scoring");
-
+// let gameOver = false
 //fonction qui genere mes cases lettres avec une lettre unique
 function generateLetter() {
     for (i = 0; i < 26; i++) {
-        const letters = document.createElement("div");
+        const letters = document.createElement("button");
         letters.classList = "letters";
         const letter = String.fromCharCode(97 + i);
         letters.innerText = letter;
@@ -41,25 +41,29 @@ function generateLetter() {
                         gaugWin ++;
                         gaugWinScoring.innerText = "Victoire : " + gaugWin;
                         console.log(gaugWin);
+                        // gameOver = true;
                     }
                 }
             }
             if (correctLetter === false) {
                 letters.style.visibility = "hidden";
+                malus ++;
                 if (malus < 9) {
-                    malus ++;
-                    statutFault.innerText = "Il te reste " + (9 - malus) + " essai";
+                    
+                    statutFault.innerText = "Il te reste " + (9 - malus) + " essai(s)";
                 }
                 else if (malus === 9){
                     statutFault.innerText = "Perdu !"
                     restart.innerHTML = "Recommencer"
+                    // gameOver = true;
                 }
                 imagePendu.style.backgroundImage = `url(images/pendu_${malus}.jpg`;
-               
+            
             }
         })
     }
  }
+ 
  
  
  console.log(letterAloneArray)
