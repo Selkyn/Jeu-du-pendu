@@ -26,11 +26,13 @@ function generateLetter() {
         letters.addEventListener('click', function(){
             letterAloneArray.push(letter);
             let correctLetter = false;
-            for (let y = 0; y < letterRandomWord.length; y++) {
-                if (letterRandomWord[y].innerText === letter) {
-                    winArray.push(letterRandomWord[y]);
+            for (let y = 0; y < randomWord.length; y++) {
+                if (randomWord[y] === letter) {
+                    console.log(randomWord[y]=== letter)
+                    winArray.push(randomWord[y]);
                     console.log(winArray)
-                    letterRandomWord[y].style.color = "black"
+                    letterRandomWord[y].innerText = randomWord[y];
+                    // letterRandomWord[y].style.color = "black"
                     letters.style.visibility = "hidden";
                     correctLetter = true;
                     if (winArray.length === letterRandomWord.length) {
@@ -40,11 +42,9 @@ function generateLetter() {
                         gaugWinScoring.innerText = "Victoire : " + gaugWin;
                         console.log(gaugWin);
                     }
-                    // statutFault.innerText = "Bien joué !"
                 }
             }
             if (correctLetter === false) {
-                
                 letters.style.visibility = "hidden";
                 if (malus < 9) {
                     malus ++;
@@ -53,10 +53,7 @@ function generateLetter() {
                 else if (malus === 9){
                     statutFault.innerText = "Perdu !"
                     restart.innerHTML = "Recommencer"
-                    // restart.style.display = "block"
-                    // restart.addEventListener('click', location.reload, false);
                 }
-                
                 imagePendu.style.backgroundImage = `url(images/pendu_${malus}.jpg`;
                
             }
@@ -74,7 +71,7 @@ function randomWordFunction () {
     randomWord.forEach((element) => {
         const letterRandomWord = document.createElement("div");
         letterRandomWord.classList = "letter-random-word";
-        letterRandomWord.innerText = element;
+        letterRandomWord.innerText = "_";
         containerRandomLetter.appendChild(letterRandomWord);
         console.log(element)
         
