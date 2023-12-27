@@ -108,3 +108,28 @@ h1 {
     background-color: #ae6118;
     border-radius: 20px;
 }
+
+#restart:hover {
+    cursor: pointer;
+}
+
+#scoring {
+    display: flex;
+    gap: 20px;
+}
+
+#win-score {
+    color: blue;
+}
+
+#lose-score {
+    color: red;
+}
+
+#vertical-line {
+    width: 3px;
+    height: 20px;
+    margin: auto;
+    background-color: #ae6118;
+    display: block;
+}

@@ -22,7 +22,11 @@
             <p id="statut-fault">Il te reste 9 essais</p>
             <button id="restart">Changer de mot</button>
             <!-- <input type="button" onclick='window.location.reload(false)' value="Changer de mot" id="restart"/> -->
-            <p id="gaug-win-scoring">Victoire : 0</p>
+            <div id="scoring">
+                <p id="gaug-win-scoring">Victoire : <span id="win-score">0</span></p>
+                <div id="vertical-line"></div>
+                <p id="gaug-lose-scoring">Défaite : <span id="lose-score">0</span></p>
+            </div>
         </section>
 
         <section id="section-letter">
