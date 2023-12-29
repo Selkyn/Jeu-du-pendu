@@ -38,8 +38,9 @@ function generateLetter() {
                         letters.style.visibility = "hidden";
                         correctLetter = true;
                         if (winArray.length === letterRandomWord.length) {
+                            containerLetter.style.display = "none";
                             statutFault.innerText = "Bravo !!!"
-                            restart.innerText = "Recommencer"
+                            restart.style.display = "block"
                             gaugWin++;
                             winScore.innerText = gaugWin;
                             console.log(gaugWin);
@@ -54,8 +55,10 @@ function generateLetter() {
 
                         statutFault.innerText = "Il te reste " + (9 - malus) + " essai(s)";
                     } else if (malus === 9) {
-                        statutFault.innerText = "Pendu !!!"
-                        restart.innerHTML = "Recommencer"
+                        containerLetter.style.display = "none"
+                        restart.style.display = "block"
+                        const stringRandomWord = randomWord.join("");
+                        statutFault.innerText = "Pendu !!! Le mot était : " + stringRandomWord +"."
                         gauglose++;
                         loseScore.innerText = gauglose;
                         gameOver = true;
@@ -119,14 +122,15 @@ async function getRandomWord() { // Async pour faire une fonction asynchrone, ç
     randomWord = await getRandomWord();
     generateLetter();
     randomWordFunction();
-    console.log(randomWord);
+    // console.log(randomWord);
 })();
 
 
 //fonction pour restart le jeu
 async function restartGame() {
+    containerLetter.style.display = "flex";
+    restart.style.display = "none";
     gameOver = false;
-    restart.innerText = "Changer de mot"
     statutFault.innerText = "Il te reste 9 essais";
     imagePendu.style.backgroundImage = "url(images/pendu_0.jpg"
     malus = 0;
